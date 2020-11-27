@@ -15,9 +15,9 @@ It's time to unwind.
 
 ## Why
 
-* spend less time configuring and resolving
+* lower DNS latency
 * free RAM
-* keep your existing [DNS blocking lists](https://filterlists.com) and exceptions
+* keep existing [DNS blocking lists](https://filterlists.com) and exceptions
 
 ## How
 
@@ -28,13 +28,13 @@ unwind(8) queries its recursor, a DoT forwarder, or an authoritative nameserver.
 ## Features
 
 * [lightweight](#preview)
-* [fastest answers](https://man.openbsd.org/unwind.conf#preference)
+* [fast](https://man.openbsd.org/unwind.conf#preference)
 * [simple configuration](src/etc/unwind.conf)
 * [sane defaults](https://www.openbsd.org/papers/bsdcan2019_unwind.pdf)
 * [best practice recursor](https://undeadly.org/cgi?action=article;sid=20200922090542)
 * [automatic cache](https://man.openbsd.org/unwind#DESCRIPTION)
 * [efficient blocking list](https://man.openbsd.org/unwind.conf#block)
-* residential [`home.arpa.`](https://tools.ietf.org/html/rfc8375) network
+* residential [`home.arpa.`](https://tools.ietf.org/html/rfc8375) network support
 
 ## Getting started
 
