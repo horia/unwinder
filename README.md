@@ -108,6 +108,14 @@ key-cache: 34504 / 1048576 (3.29%)
 neg-cache: 14212 / 102400 (13.88%)
 ```
 
+```console
+# top -d1 -g unwind
+  PID USERNAME PRI NICE  SIZE   RES STATE     WAIT      TIME    CPU COMMAND
+71357 _unwind    2    0   10M   11M sleep/1   kqread    0:49  0.00% unwind
+37791 _unwind    2    0   78M   85M sleep/2   kqread    0:08  0.00% unwind
+38692 root       2    0 2916K 1180K idle      kqread    0:00  0.00% unwind
+```
+
 **Caveats**
 
 Some public DNS resolvers (e.g. Google, Cloudflare) provide a response to DNS forward queries for home.arpa from IANA blackhole servers.
