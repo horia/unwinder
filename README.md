@@ -51,7 +51,7 @@ sh /etc/netstart em0
 Install and configure [myname](src/etc/myname)
 
 Install and configure [nsd.conf](src/var/nsd/etc/nsd.conf)
-Install and configure the [master zones](src/nsd/zones/master)
+Install and configure the [master zones](src/var/nsd/zones/master)
 ```sh
 nsd-control-setup
 rcctl restart nsd
@@ -113,5 +113,5 @@ Some public DNS resolvers provide a response to DNS forward queries for home.arp
 
 unwind provides a negative response to DNS reverse-mapping queries for IP addresses that are not globally unique.
 
-Split-horizon DNS is not supported. A *redirection and reflection* is used for connecting to the external address of the firewall from a host on the LAN.
+Split-horizon DNS is not supported. A [redirection and reflection](src/etc/pf.conf.unwinder) is used for connecting to the external address of the firewall from a host on the LAN.
 
