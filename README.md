@@ -51,6 +51,7 @@ sh /etc/netstart em0
 Install and configure [myname](src/etc/myname)
 
 Install and configure [nsd.conf](src/var/nsd/etc/nsd.conf)
+
 Install and configure the [master zones](src/var/nsd/zones/master)
 ```sh
 nsd-control-setup
@@ -63,7 +64,7 @@ echo badexample.com > /var/db/unwind-block.txt.local
 /usr/local/bin/unwind-block > /var/db/unwind-block.txt
 ```
 
-Install and configure the [`unwind-unblock`](src/usr/local/bin/unwind-unblock) whitelist and [daily.local](src/etc/daily.local) updates.
+Install and configure the [`unwind-unblock`](src/usr/local/bin/unwind-unblock) exceptions and [daily.local](src/etc/daily.local) updates.
 ```sh
 echo example.com > /var/db/unwind-unblock.txt
 /usr/local/bin/unwind-unblock > /var/db/unwind-block.txt.clean
