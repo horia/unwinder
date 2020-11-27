@@ -43,11 +43,6 @@ Include and configure [pf.conf.unwinder](src/etc/pf.conf.unwinder)
 pfctl -f /etc/pf.conf
 ```
 
-Install [dhclient.conf](src/etc/dhclient.conf)
-```sh
-sh /etc/netstart em0
-```
-
 Install and configure [myname](src/etc/myname)
 
 Install and configure [nsd.conf](src/var/nsd/etc/nsd.conf)
@@ -69,6 +64,11 @@ Install and configure the [`unwind-unblock`](src/usr/local/bin/unwind-unblock) e
 echo example.com > /var/db/unwind-unblock.txt
 /usr/local/bin/unwind-unblock > /var/db/unwind-block.txt.clean
 mv /var/db/unwind-block.txt.clean /var/db/unwind-block.txt
+```
+
+Install [dhclient.conf](src/etc/dhclient.conf)
+```sh
+sh /etc/netstart em0
 ```
 
 Install [resolv.conf](src/etc/resolv.conf)
@@ -110,7 +110,7 @@ neg-cache: 14212 / 102400 (13.88%)
 
 **Caveats**
 
-Some public DNS resolvers provide a response to DNS forward queries for home.arpa from IANA blackhole servers.
+Some public DNS resolvers (e.g. Google, Cloudflare) provide a response to DNS forward queries for home.arpa from IANA blackhole servers.
 
 unwind provides a negative response to DNS reverse-mapping queries for IP addresses that are not globally unique.
 
