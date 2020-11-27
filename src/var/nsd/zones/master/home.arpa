@@ -1,0 +1,12 @@
+$TTL		86400					; default time to live
+home.arpa.		IN	SOA	ns.home.arpa.	hostmaster.home.arpa. (
+					2020000000	; Serial Number
+					28800		; Refresh
+					7200		; Retry
+					604800		; Expire
+					86400		; Min TTL
+					)
+@			IN	NS	ns.home.arpa.
+ns.home.arpa.		IN	A	10.0.0.1
+ns.home.arpa.		IN	AAAA	fd80:a:b:c::1
+@			IN	HINFO	"" "OPENBSD"

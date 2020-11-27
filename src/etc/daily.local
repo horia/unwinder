@@ -1,0 +1,6 @@
+next_part "Updating the unwind(8) DNS blocking list"
+/usr/local/bin/unwind-block > /var/db/unwind-block.txt
+/usr/local/bin/unwind-unblock > /var/db/unwind-block.txt.clean
+mv /var/db/unwind-block.txt.clean /var/db/unwind-block.txt
+rcctl reload unwind
+

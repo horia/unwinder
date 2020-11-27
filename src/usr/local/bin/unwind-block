@@ -1,0 +1,51 @@
+#!/bin/sh
+# prx -- prx@ybad.name.
+# Licence:  MIT
+#
+# Create a list of domains to block with unwind
+# with option "block list file.txt"
+# usage : unwind-block > file.txt
+
+set -e
+
+[ 0 = "$(id -u)" ] || exit 1
+
+HOSTSSRC="
+https://adaway.org/hosts.txt
+https://raw.githubusercontent.com/blocklistproject/Lists/master/ads.txt
+https://raw.githubusercontent.com/blocklistproject/Lists/master/tracking.txt
+https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt
+"
+
+DOMAINSSRC="
+https://v.firebog.net/hosts/Easylist.txt
+https://v.firebog.net/hosts/Easyprivacy.txt
+https://raw.githubusercontent.com/notracking/hosts-blocklists/master/dnscrypt-proxy/dnscrypt-proxy.blacklist.txt
+https://raw.githubusercontent.com/matomo-org/referrer-spam-blacklist/master/spammers.txt
+file:///var/db/unwind-block.txt.local
+"
+
+ADGUARDSDNS="
+https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+"
+
+(
+ for h in ${HOSTSSRC}
+  do
+   ftp -o- "$h" |
+   awk '/^0.0.0.0/ || /^127.0.0.1/ && !/0.0.0.0$|localhost$|localdomain$|local$/ {print $2}'
+ done
+ for d in ${DOMAINSSRC}
+  do
+   ftp -o- "$d" |
+   sed -e 's/#.*$//g'
+ done
+ for a in ${ADGUARDSDNS}
+  do
+   ftp -o- "$a" |
+   awk '/^\|\|/' |
+   sed -e 's/^||//' -e 's/\^$//'
+ done
+) | sort -u
+exit 0
+

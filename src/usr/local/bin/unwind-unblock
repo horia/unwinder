@@ -1,0 +1,14 @@
+#!/bin/sh
+# Clean a list of domains to block with unwind
+# with option "block list file.txt"
+# usage : unwind-unblock > file.txt
+
+set -e
+
+[ 0 = "$(id -u)" ] || exit 1
+
+# remove unwind-unblock.txt from unwind-block.tx
+awk 'NR==FNR { a[$0]; next } !($0 in a)' \
+  /var/db/unwind-unblock.txt /var/db/unwind-block.txt
+
+exit 0

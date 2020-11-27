@@ -1,0 +1,11 @@
+$TTL		3600					; default time to live
+@			IN	SOA	ns.home.arpa.	hostmaster.home.arpa. (
+					2020000000	; Serial Number
+					28800		; Refresh
+					7200		; Retry
+					604800		; Expire
+					86400		; Min TTL
+					)
+@			IN	NS	ns.home.arpa.
+device.home.arpa.	IN	A	10.0.0.10
+device.home.arpa.	IN	AAAA	fd80:a:b:c:d::10
