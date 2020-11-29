@@ -120,7 +120,7 @@ neg-cache: 14212 / 102400 (13.88%)
 
 Some public DNS resolvers (e.g. Google, Cloudflare) provide a response to DNS forward queries for home.arpa from IANA blackhole servers.
 
-unwind provides a negative response to DNS reverse-mapping queries for IP addresses that are not globally unique.
+unwind provides a negative response to DNS reverse-mapping queries for IP addresses that are not globally unique, as a [feature](https://tools.ietf.org/html/rfc6305)
 
 Split-horizon DNS is not supported. A [redirection and reflection](src/etc/pf.conf.unwinder) is used for connecting to the external address of the firewall from a host on the LAN.
 
