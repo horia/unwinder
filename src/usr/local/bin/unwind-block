@@ -8,8 +8,6 @@
 
 set -e
 
-[ 0 = "$(id -u)" ] || exit 1
-
 HOSTSSRC="
 https://adaway.org/hosts.txt
 https://raw.githubusercontent.com/blocklistproject/Lists/master/ads.txt
@@ -28,6 +26,8 @@ file:///var/db/unwind-block.txt.local
 ADGUARDSDNS="
 https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
 "
+
+[ "$(id -u)" -ne 0 ] && echo "${0##*/}: need root privileges" && exit 1
 
 (
  for h in ${HOSTSSRC}
