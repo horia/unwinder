@@ -20,6 +20,8 @@ https://v.firebog.net/hosts/Easylist.txt
 https://v.firebog.net/hosts/Easyprivacy.txt
 https://raw.githubusercontent.com/notracking/hosts-blocklists/master/dnscrypt-proxy/dnscrypt-proxy.blacklist.txt
 https://raw.githubusercontent.com/matomo-org/referrer-spam-blacklist/master/spammers.txt
+https://raw.githubusercontent.com/nextdns/metadata/master/privacy/affiliate-tracking-domains
+https://raw.githubusercontent.com/nextdns/cname-cloaking-blocklist/master/domains
 file:///var/db/unwind-block.txt.local
 "
 
