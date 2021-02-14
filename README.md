@@ -17,7 +17,7 @@ It's time to unwind.
 
 * lower DNS latency
 * free RAM
-* keep existing [DNS blocking lists](https://filterlists.com) and exceptions
+* keep existing DNS blocking lists and exceptions <sup>[[`1`](https://filterlists.com)] [[`2`](https://www.bravedns.com/configure)]</sup>
 
 ## How
 
