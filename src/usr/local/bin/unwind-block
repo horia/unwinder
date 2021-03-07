@@ -27,6 +27,26 @@ file:///var/db/unwind-block.txt.local
 
 ADGUARDSDNS="
 https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/a8_net.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/act-on.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/ad-ebis.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/adobe-experience-cloud-(formerly-omniture).txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/at-internet-(formerly-xiti).txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/commanders-act.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/criteo.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/eulerian.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/geniee.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/gmo-internet-group.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/ingenious-technologies.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/keyade.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/lead-forensics.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/np6.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/oracle-eloqua.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/otto-group.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/pardot.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/tracedock.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/webtrekk.txt
+https://raw.githubusercontent.com/AdguardTeam/cname-trackers/master/trackers/wizaly.txt
 "
 
 [ "$(id -u)" -ne 0 ] && echo "${0##*/}: need root privileges" && exit 1
