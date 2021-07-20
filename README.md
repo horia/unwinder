@@ -87,6 +87,7 @@ rcctl restart unwind
 ```
 
 Install and configure [TLS certificates](https://github.com/horia/defaulter/) for DoT
+
 *n.b.* To use DoT e.g. on a laptop, configure its unwind
 ```console
 # $OpenBSD: unwind.conf
