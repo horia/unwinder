@@ -6,6 +6,10 @@ anchor "unwind" out on egress {
 v4int="10.0.0.1"
 v6int="fd80:a:b:c::1"
 table <relayd> persist counters { $v4int $v6int }
+# Allow traffic on port 53 and 853 from a host on the LAN
+anchor "unwinder" proto { tcp udp } from (self:network) to <relayd> port { domain domain-s } {
+  pass log
+}
 # Connecting to the external address of the firewall from a host on the LAN
 # www redirection and reflection
 anchor "reflect" proto tcp from (self:network) to (egress) port { http https } {
