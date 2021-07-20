@@ -66,16 +66,44 @@ echo example.com > /var/db/unwind-unblock.txt
 mv /var/db/unwind-block.txt.clean /var/db/unwind-block.txt
 ```
 
-Install [dhclient.conf](src/etc/dhclient.conf)
+Install and configure the [egress](src/etc/hostname.if) interface
 ```sh
+cp src/etc/hostname.if /etc/hostname.em0
 sh /etc/netstart em0
 ```
 
 Install [resolv.conf](src/etc/resolv.conf)
 
+Enable dhcpleased and resolvd on -release or -stable
+```sh
+rcctl enable dhcpleased resolvd
+rcctl start dhcpleased resolvd
+```
+
 Install and configure [unwind.conf](src/etc/unwind.conf)
 ```sh
+rcctl enable unwind
 rcctl restart unwind
+```
+
+Install and configure [TLS certificates](https://github.com/horia/defaulter/) for DoT
+*n.b.* To use DoT e.g. on a laptop, configure its unwind
+```console
+# $OpenBSD: unwind.conf
+
+# Macros
+
+v4unwinder="10.0.0.1 authentication name unwinder.example.com DoT"
+v6unwinder="fd80:a:b:c::1 authentication name unwinder.example.com DoT"
+
+# Global Configuration
+
+forwarder {
+ $v4unwinder
+ $v6unwinder
+}
+
+preference DoT
 ```
 
 Install and configure [relayd.conf](src/etc/relayd.conf)
