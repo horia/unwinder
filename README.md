@@ -125,12 +125,12 @@ rcctl restart rad
 #### Preview
 
 ```console
-# du -h /var/db/unwind-block.txt
+$ du -h /var/db/unwind-block.txt
 12.4M   /var/db/unwind-block.txt
 ```
 
 ```console
-# unwindctl status memory 
+$ unwindctl status memory 
 msg-cache:   76198 / 1048576 (7.27%)
 rrset-cache: 228898 / 1048576 (21.83%)
 key-cache: 34504 / 1048576 (3.29%)
@@ -138,11 +138,38 @@ neg-cache: 14212 / 102400 (13.88%)
 ```
 
 ```console
-# top -d1 -g unwind
-  PID USERNAME PRI NICE  SIZE   RES STATE     WAIT      TIME    CPU COMMAND
-71357 _unwind    2    0   10M   11M sleep/1   kqread    0:49  0.00% unwind
-37791 _unwind    2    0   78M   85M sleep/2   kqread    0:08  0.00% unwind
-38692 root       2    0 2916K 1180K idle      kqread    0:00  0.00% unwind
+$ ps aux -U _unwind                                                                            
+USER       PID %CPU %MEM   VSZ   RSS TT  STAT   STARTED       TIME COMMAND
+_unwind  10938  0.0  0.4 16824 15980 ??  IpU    26Jun21   34:30.76 unwind: resolver (unwind)
+_unwind  19822  0.0  1.6 65644 66052 ??  Ip     26Jun21   13:35.89 unwind: frontend (unwind)
+```
+
+```console
+$ fstat -u _unwind -n
+USER     CMD          PID   FD  DEV      INUM        MODE   R/W    SZ|DV
+_unwind  unwind     19822   wd  4,57   207368        40755    r      512
+_unwind  unwind     19822 root  4,57   207368        40755    r      512
+_unwind  unwind     19822    0  4,48    17811        20666   rw    2,2  
+_unwind  unwind     19822    1  4,48    17811        20666   rw    2,2  
+_unwind  unwind     19822    2  4,48    17811        20666   rw    2,2  
+_unwind  unwind     19822    3* unix stream 0x0
+_unwind  unwind     19822    4 kqueue 0x0 0 state: W
+_unwind  unwind     19822    5* unix stream 0x0
+_unwind  unwind     19822    6* internet dgram udp 127.0.0.1:53
+_unwind  unwind     19822    7* internet6 dgram udp [::1]:53
+_unwind  unwind     19822    8* internet stream tcp 0x0 127.0.0.1:53
+_unwind  unwind     19822    9* internet6 stream tcp 0x0 [::1]:53
+_unwind  unwind     19822   10  4,57   129757       100644   rw      376
+_unwind  unwind     19822   11* unix stream 0x0 /dev/unwind.sock
+_unwind  unwind     19822   12* route raw 0 0x0
+_unwind  unwind     19822   13* unix stream 0x0 /dev/unwind.sock
+_unwind  unwind     10938   wd  4,48    49761        40700    r      512
+_unwind  unwind     10938    0  4,48    17811        20666   rw    2,2  
+_unwind  unwind     10938    1  4,48    17811        20666   rw    2,2  
+_unwind  unwind     10938    2  4,48    17811        20666   rw    2,2  
+_unwind  unwind     10938    3* unix stream 0x0
+_unwind  unwind     10938    4 kqueue 0x0 0 state: W
+_unwind  unwind     10938    5* unix stream 0x0
 ```
 
 **Caveats**
