@@ -1,20 +1,14 @@
 # Allow traffic on port 53 and 853 from the external interface
-anchor "unwind" out on egress {
-  pass log (user) proto { tcp udp } to port { domain domain-s } user _unwind
-}
+pass out log (user) on egress proto { tcp udp } from (self) to port { domain domain-s } user _unwind
 
 v4int="10.0.0.1"
 v6int="fd80:a:b:c::1"
 table <relayd> persist counters { $v4int $v6int }
 # Allow traffic on port 53 and 853 from a host on the LAN
-anchor "unwinder" proto { tcp udp } from (self:network) to <relayd> port { domain domain-s } {
-  pass log
-}
+pass log proto { tcp udp } from (self:network) to <relayd> port { domain domain-s }
 # Connecting to the external address of the firewall from a host on the LAN
 # www redirection and reflection
-anchor "reflect" proto tcp from (self:network) to (egress) port { http https } {
-  pass in log rdr-to <relayd>
-}
+pass in log proto tcp from (self:network) to (egress) port { http https } rdr-to <relayd>
 
 anchor "relayd/*"
 
